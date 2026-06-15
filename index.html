@@ -1,128 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#0d0f1a" />
-  <title>2048 — Premium Edition</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="app.js"></script>
 </head>
 <body>
 
-  <!-- Ambient background orbs -->
-  <div class="bg-orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-
-  <!-- Main app wrapper -->
-  <div class="app" id="app">
-
-    <!-- ───── HEADER ───── -->
-    <header class="header">
-      <div class="header-top">
-        <h1 class="game-title">2048</h1>
-        <button class="btn-new" id="btn-new-game" aria-label="Start a new game">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="1 4 1 10 7 10"></polyline>
-            <path d="M3.51 15a9 9 0 1 0 .49-3.5"></path>
-          </svg>
-          New Game
-        </button>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-card" id="stat-score">
-          <span class="stat-label">Score</span>
-          <span class="stat-value" id="score-display">0</span>
+<div class="container">
+    <div class="info">
+        <h1>2048</h1>
+        <div class="score-container">
+            <p class="score-title">score</p>
+            <h2 id="score">0</h2>
         </div>
-        <div class="stat-card" id="stat-best">
-          <span class="stat-label">Best</span>
-          <span class="stat-value" id="best-display">0</span>
-        </div>
-        <div class="stat-card" id="stat-moves">
-          <span class="stat-label">Moves</span>
-          <span class="stat-value" id="moves-display">0</span>
-        </div>
-        <div class="stat-card" id="stat-timer">
-          <span class="stat-label">Time</span>
-          <span class="stat-value" id="timer-display">00:00</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- ───── GAME BOARD ───── -->
-    <main class="board-wrapper" role="main">
-      <div class="board-glass">
-        <div class="board" id="board" role="grid" aria-label="2048 game board">
-          <!-- 16 cell backgrounds -->
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-          <div class="cell" role="gridcell"></div>
-        </div>
-        <!-- Tiles are absolutely positioned over the board -->
-        <div class="tile-layer" id="tile-layer" aria-live="polite" aria-atomic="true"></div>
-      </div>
-
-      <!-- Hint text -->
-      <p class="hint-text" aria-label="Controls hint">
-        Arrow keys / WASD · Swipe on mobile
-      </p>
-    </main>
-
-  </div><!-- /.app -->
-
-  <!-- ───── WIN MODAL ───── -->
-  <div class="modal-overlay" id="modal-win" role="dialog" aria-modal="true" aria-labelledby="win-title" hidden>
-    <div class="modal-card">
-      <div class="modal-emoji" aria-hidden="true">🎉</div>
-      <h2 class="modal-title" id="win-title">You reached 2048!</h2>
-      <p class="modal-sub">Incredible! You've mastered the grid.</p>
-      <div class="modal-score-display">
-        <span class="modal-score-label">Your Score</span>
-        <span class="modal-score-value" id="win-score">0</span>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-modal btn-primary" id="btn-continue">Keep Playing</button>
-        <button class="btn-modal btn-secondary" id="btn-win-new">Play Again</button>
-      </div>
     </div>
-  </div>
+    <p id="result">Join the numbers and get to the <b>2048</b> tile!</p>
+    <div class="grid"></div>
+</div>
 
-  <!-- ───── LOSE MODAL ───── -->
-  <div class="modal-overlay" id="modal-lose" role="dialog" aria-modal="true" aria-labelledby="lose-title" hidden>
-    <div class="modal-card">
-      <div class="modal-emoji" aria-hidden="true">😔</div>
-      <h2 class="modal-title" id="lose-title">Game Over</h2>
-      <p class="modal-sub">No more moves available.</p>
-      <div class="modal-score-display">
-        <span class="modal-score-label">Final Score</span>
-        <span class="modal-score-value" id="lose-score">0</span>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-modal btn-primary" id="btn-try-again">Try Again</button>
-        <button class="btn-modal btn-secondary" id="btn-lose-new">New Game</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ───── SCORE POP TEMPLATE ───── -->
-  <!-- Dynamically created by JS; defined here as reference -->
-
-  <script src="script.js"></script>
 </body>
 </html>
